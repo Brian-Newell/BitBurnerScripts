@@ -1,2 +1,2 @@
 # BitBurnerScripts
-Scripts I put together alone or using resources online.
+Scripts I put together to get the job done.
