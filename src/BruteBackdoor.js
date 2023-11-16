@@ -14,12 +14,16 @@ export async function main(ns) {
         ["maxwait", 360] // max wait in seconds; default 360 (6 minutes))
     ]);
 
-    await backdoorServers(ns, flags);
+    // adding purchased servers to the completed list, to avoid unecessary backdoor
+    let completed = ns.getPurchasedServers();
+    completed.push("home");
+
+    await backdoorServers(ns, flags, completed);
 
     ns.tprint("Brute Backdoor Complete!");
 }
 
-async function backdoorServers(ns, flags, server = "home", chain = [], complete = ["home"]) {
+async function backdoorServers(ns, flags, completed = ["home"], server = "home", chain = []) {
 
     // excluding the home server, add the current server to the chain and run the command
     if (server != "home") {
@@ -31,9 +35,9 @@ async function backdoorServers(ns, flags, server = "home", chain = [], complete 
 
     // recursively re-run backdoorServers for all directly connected servers, aside from those that are complete
     for(let sv of servers) {
-        if (complete.includes(sv)) continue;
-        complete.push(sv);
-        await backdoorServers(ns,flags, sv, chain, complete);
+        if (completed.includes(sv)) continue;
+        completed.push(sv);
+        await backdoorServers(ns, flags, completed, sv, chain);
     }
 
     // reduce the chain when returned to ensure the chain grows/shrinks to match
