@@ -15,6 +15,8 @@ export async function main(ns) {
     ]);
 
     await backdoorServers(ns, flags);
+
+    ns.tprint("Brute Backdoor Complete!");
 }
 
 async function backdoorServers(ns, flags, server = "home", chain = [], complete = ["home"]) {
