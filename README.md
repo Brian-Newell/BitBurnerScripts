@@ -12,3 +12,9 @@ This does NOT require the singularity unlocks as it simply feeds to commands dir
 [home/] run BruteBackdoor.js
 [home/] run BruteBackdoor.js --timeout 1 --maxwait 360
 ```
+
+### Flags
+```
+--timeout: default 1; wait time, in seconds, between "Backdoor ... success..." checks
+--maxwait: default 360; max wait time, in seconds, for "Backdoor ... success..." checks, or error
+```
