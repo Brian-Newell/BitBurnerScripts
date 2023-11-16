@@ -8,5 +8,7 @@ This does NOT require the singularity unlocks as it simply feeds to commands dir
 'So grab some grub choom and relax!'
 
 ### Examples
+```js
 [home/] run BruteBackdoor.js
 [home/] run BruteBackdoor.js --timeout 1 --maxwait 360
+```
